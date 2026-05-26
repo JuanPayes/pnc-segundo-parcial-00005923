@@ -1,8 +1,11 @@
 package com.uca.pncsegundoparcialveterinaria.utils.mappers;
 
+import com.uca.pncsegundoparcialveterinaria.domain.dto.response.product.ProductResponse;
 import com.uca.pncsegundoparcialveterinaria.domain.dto.rquest.CreateProductRequest;
 import com.uca.pncsegundoparcialveterinaria.domain.dto.rquest.UpdateProductRequest;
 import com.uca.pncsegundoparcialveterinaria.domain.entities.Product;
+
+import java.util.List;
 
 public class ProductMapper {
 
@@ -20,6 +23,20 @@ public class ProductMapper {
                 .build();
     }
 
+    public static ProductResponse toResponse(Product product){
+        return new ProductResponse(
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                product.getStock(),
+                product.getCategory(),
+                product.getAvailable(),
+                product.getExpirationDate(),
+                product.getRequiredPrescription(),
+                product.getSupplier()
+        );
+    }
+
     public static CreateProductRequest toDTO(Product product){
         return CreateProductRequest.builder()
                 .name(product.getName())
@@ -34,9 +51,9 @@ public class ProductMapper {
                 .build();
     }
 
-    public static UpdateProductRequest toUpdateEntity(UpdateProductRequest request){
+    public static Product toUpdateEntity(UpdateProductRequest request){
 
-        return UpdateProductRequest.builder()
+        return Product.builder()
                 .name(request.name())
                 .description(request.description())
                 .price(request.price())
