@@ -1,5 +1,6 @@
 package com.uca.pncsegundoparcialveterinaria.domain.entities;
 
+import com.uca.pncsegundoparcialveterinaria.utils.enums.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,9 @@ public class Product {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "category")
+    private Category category;
+
     @Column(name = "price")
     private BigDecimal price;
 
@@ -36,8 +40,8 @@ public class Product {
     @Column(name = "available")
     private Boolean available;
 
-    @Column(name = "requieredPrescription")
-    private Boolean requieredPrescription;
+    @Column(name = "requiredPrescription")
+    private Boolean requiredPrescription;
 
     @Column(name = "expiration")
     private Date expirationDate;
